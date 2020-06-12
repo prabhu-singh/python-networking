@@ -9,12 +9,13 @@ def get_arguments():
 	parser.add_option("-i", "--interface", dest="interface", help="Interface to change MAC")
 	parser.add_option("-m", "--mac", dest="new_mac", help="new MAC address")
 
-	(options, arguments)=parser.parse_arg()
+	(options, arguments)=parser.parse_args()
 
 	if not options.interface:
 		parser.error("[-] Please specify an INTERFACE")
 	elif not options.new_mac:
 		parser.error("[-] Please specify a new MAC address")
+	return options
 
 
 def change_mac(interface, new_mac):
@@ -90,7 +91,7 @@ change_mac(option.interface, options.new_mac)
 
 current_mac = get_current_mac(option.interface)
 
-if current_mac = option.new_mac:
+if current_mac == option.new_mac:
 	print("[+] MAC address changed successfully to " + current_mac)
 else:
 	print("[-] MAC address did not changed")
